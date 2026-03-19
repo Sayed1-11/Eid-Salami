@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="eid-salami.jpg">
   <title>Eid Salami Spin — Get Your Salami!</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Rajdhani:wght@400;600;700&family=Black+Ops+One&family=Outfit:wght@300;400;600&display=swap');
@@ -52,13 +53,27 @@
     }
 
     @keyframes gwEntrance {
-      from { opacity: 0; transform: scale(1.1); filter: blur(10px); }
-      to { opacity: 1; transform: scale(1); filter: blur(0); }
+      from {
+        opacity: 0;
+        transform: scale(1.1);
+        filter: blur(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+      }
     }
 
     @keyframes bgShimmer {
-      0% { background-position: 50% 0%; }
-      100% { background-position: 50% 100%; }
+      0% {
+        background-position: 50% 0%;
+      }
+
+      100% {
+        background-position: 50% 100%;
+      }
     }
 
     /* Festive Islamic Motif Overlay */
@@ -77,8 +92,13 @@
     }
 
     @keyframes patternPan {
-      from { transform: translate(-5%, -5%) rotate(0deg); }
-      to { transform: translate(5%, 5%) rotate(5deg); }
+      from {
+        transform: translate(-5%, -5%) rotate(0deg);
+      }
+
+      to {
+        transform: translate(5%, 5%) rotate(5deg);
+      }
     }
 
     #sky {
@@ -104,8 +124,15 @@
     }
 
     @keyframes moonEntrance {
-      from { transform: translate(50px, -50px); opacity: 0; }
-      to { transform: translate(0, 0); opacity: 1; }
+      from {
+        transform: translate(50px, -50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
     }
 
     .moon::after {
@@ -134,13 +161,28 @@
       transform-origin: top center;
     }
 
-    .lantern:nth-child(1) { animation-delay: 0s, 0.5s; }
-    .lantern:nth-child(2) { animation-delay: 0.8s, 0.7s; }
-    .lantern:nth-child(3) { animation-delay: 1.6s, 0.9s; }
+    .lantern:nth-child(1) {
+      animation-delay: 0s, 0.5s;
+    }
+
+    .lantern:nth-child(2) {
+      animation-delay: 0.8s, 0.7s;
+    }
+
+    .lantern:nth-child(3) {
+      animation-delay: 1.6s, 0.9s;
+    }
 
     @keyframes lanternEntrance {
-      from { transform: translateY(-100px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+      from {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     @keyframes swing {
