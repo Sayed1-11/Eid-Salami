@@ -10,8 +10,8 @@
   <!-- Social Media Meta Tags -->
   <meta property="og:title" content="Eid Salami From Sayed" />
   <meta property="og:description" content="Get you salami now by your friend" />
-  <meta property="og:image" content="https://eid-salami-sape.onrender.com/eid-salami.jpg" />
-  <meta property="og:url" content="https://eid-salami-sape.onrender.com/" />
+  <meta property="og:image" content="https://sayed-eid-salami.onrender.com/eid-salami.jpg" />
+  <meta property="og:url" content="https://sayed-eid-salami.onrender.com/" />
   <meta name="twitter:card" content="summary_large_image">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Rajdhani:wght@400;600;700&family=Black+Ops+One&family=Outfit:wght@300;400;600&display=swap');
@@ -737,6 +737,8 @@
     function isBig(a) { return BIG.has(segments[getIdx(a)].value); }
     function easeOut(t) { return 1 - Math.pow(1 - t, 4); }
 
+    const moneySound = new Audio('money_sound.mp3');
+
     function showToast(val, wasScam) {
       const toast = document.getElementById('big-toast');
       const overlay = document.getElementById('page-overlay');
@@ -758,6 +760,12 @@
       toast.classList.add('show');
       overlay.classList.add('show');
       spawnParticles();
+
+      // Play money sound
+      if (moneySound) {
+        moneySound.currentTime = 0;
+        moneySound.play().catch(e => console.error("Audio play failed:", e));
+      }
     }
 
     function hideToast() {
