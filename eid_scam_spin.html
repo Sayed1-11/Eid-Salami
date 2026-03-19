@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eid Salami Spin — Get Your Salami!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Rajdhani:wght@400;600;700&family=Black+Ops+One&family=Outfit:wght@300;400;600&display=swap');
+
+    :root {
+      --emerald-gradient: radial-gradient(circle at top, #065f46, #022c22 80%);
+      --emerald-dark: #022c22;
+      --gold: #d4af37;
+      --gold-bright: #fbbf24;
+      --text-green: #a7f3d0;
+      --white: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--emerald-dark);
+      font-family: 'Outfit', sans-serif;
+      color: var(--white);
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    #gw {
+      width: 100%;
+      max-width: 480px;
+      background: var(--emerald-gradient);
+      background-size: 150% 150%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.8);
+      animation: gwEntrance 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards, bgShimmer 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes gwEntrance {
+      from { opacity: 0; transform: scale(1.1); filter: blur(10px); }
+      to { opacity: 1; transform: scale(1); filter: blur(0); }
+    }
+
+    @keyframes bgShimmer {
+      0% { background-position: 50% 0%; }
+      100% { background-position: 50% 100%; }
+    }
+
+    /* Festive Islamic Motif Overlay */
+    #gw::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -20%;
+      right: -20%;
+      bottom: -20%;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 L60 40 L100 50 L60 60 L50 100 L40 60 L0 50 L40 40 Z' fill='%23fbbf24' fill-opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.2;
+      pointer-events: none;
+      z-index: 1;
+      animation: patternPan 60s linear infinite;
+    }
+
+    @keyframes patternPan {
+      from { transform: translate(-5%, -5%) rotate(0deg); }
+      to { transform: translate(5%, 5%) rotate(5deg); }
+    }
+
+    #sky {
+      width: 100%;
+      height: 140px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .moon {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--gold-bright);
+      box-shadow: 0 0 30px rgba(251, 191, 36, 0.4);
+      animation: moonEntrance 2s ease-out;
+    }
+
+    @keyframes moonEntrance {
+      from { transform: translate(50px, -50px); opacity: 0; }
+      to { transform: translate(0, 0); opacity: 1; }
+    }
+
+    .moon::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #0d2e24;
+    }
+
+    .lantern-set {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      padding-bottom: 15px;
+    }
+
+    .lantern {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: swing 4s ease-in-out infinite alternate, lanternEntrance 1.5s ease-out backwards;
+      transform-origin: top center;
+    }
+
+    .lantern:nth-child(1) { animation-delay: 0s, 0.5s; }
+    .lantern:nth-child(2) { animation-delay: 0.8s, 0.7s; }
+    .lantern:nth-child(3) { animation-delay: 1.6s, 0.9s; }
+
+    @keyframes lanternEntrance {
+      from { transform: translateY(-100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes swing {
+      0% {
+        transform: rotate(-5deg);
+      }
+
+      100% {
+        transform: rotate(5deg);
+      }
+    }
+
+    .l-body {
+      width: 26px;
+      height: 42px;
+      border-radius: 50% 50% 40% 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 1.5px solid rgba(212, 175, 55, 0.6);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .l-body::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.8);
+    }
+
+    .l-top,
+    .l-bot {
+      width: 18px;
+      height: 6px;
+      background: linear-gradient(to right, #b8860b, var(--gold), #b8860b);
+      border-radius: 2px;
+    }
+
+    .l-string {
+      width: 1px;
+      height: 25px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .eid-header {
+      text-align: center;
+      margin: 10px 0 30px;
+      z-index: 2;
+    }
+
+    .eid-title {
+      font-family: 'Amiri', serif;
+      font-size: 42px;
+      color: var(--gold-bright);
+      line-height: 1;
+      margin-bottom: 5px;
+      text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    }
+
+    .eid-sub {
+      font-size: 16px;
+      color: var(--text-green);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    /* Wheel Container */
+    .wheel-area {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .ptr {
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 35px solid var(--gold-bright);
+      position: relative;
+      top: 10px;
+      z-index: 10;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+    }
+
+    #wc {
+      width: 340px;
+      height: 340px;
+      max-width: 88vw;
+      max-height: 88vw;
+      border-radius: 50%;
+      border: 10px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+      background: #000;
+    }
+
+    #stxt {
+      font-size: 16px;
+      color: var(--gold-bright);
+      margin-top: 20px;
+      min-height: 24px;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+    }
+
+    .sbtn {
+      margin-top: 30px;
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+      border: none;
+      padding: 18px 60px;
+      font-family: 'Black Ops One', cursive;
+      font-size: 22px;
+      color: var(--emerald-dark);
+      border-radius: 100px;
+      cursor: pointer;
+      letter-spacing: 3px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      text-transform: uppercase;
+      z-index: 5;
+    }
+
+    .sbtn:hover:not(:disabled) {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .sbtn:active:not(:disabled) {
+      transform: translateY(2px);
+    }
+
+    .sbtn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      filter: grayscale(0.5);
+    }
+
+    /* Stats & History */
+    .bottom-ui {
+      margin-top: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      z-index: 2;
+    }
+
+    .wins-history {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .wchip {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 12px;
+      padding: 6px 14px;
+      font-size: 14px;
+      color: var(--gold-bright);
+      font-weight: 600;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      width: 100%;
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-green);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold-bright);
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    /* THE BIG TOAST */
+    #page-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.6s ease;
+    }
+
+    #page-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #big-toast {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.4);
+      background: linear-gradient(145deg, #0d3b2b, #031a14);
+      border: 2px solid var(--gold-bright);
+      border-radius: 40px;
+      padding: 50px 30px;
+      width: 85%;
+      max-width: 400px;
+      text-align: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 0 100px rgba(212, 175, 55, 0.2), 0 0 40px rgba(0, 0, 0, 0.8);
+    }
+
+    #big-toast.show {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .toast-icon {
+      font-size: 70px;
+      margin-bottom: 25px;
+      display: block;
+      filter: drop-shadow(0 0 20px var(--gold));
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .toast-title {
+      font-family: 'Amiri', serif;
+      font-size: 32px;
+      color: var(--gold-bright);
+      margin-bottom: 10px;
+    }
+
+    .toast-msg {
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 5px;
+      opacity: 0.9;
+    }
+
+    .toast-spin {
+      font-size: 12px;
+      color: var(--text-green);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      opacity: 0.8;
+      font-weight: 600;
+    }
+
+    .toast-amount {
+      font-family: 'Black Ops One', cursive;
+      font-size: 72px;
+      color: var(--gold-bright);
+      margin: 20px 0;
+      line-height: 1;
+      text-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
+    }
+
+    .toast-scam {
+      color: #ff6b6b;
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 10px;
+      letter-spacing: 1px;
+      min-height: 20px;
+    }
+
+    .toast-close {
+      margin-top: 40px;
+      background: var(--gold);
+      color: #022c22;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Particle effects */
+    .cracker {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1001;
+      animation: explosion 1.8s ease-out forwards;
+    }
+
+    @keyframes explosion {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+      }
+    }
+
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: twinkle 3s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: 0.1;
+      }
+
+      100% {
+        opacity: 0.8;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="page-overlay"></div>
+
+  <div id="big-toast">
+    <span class="toast-icon">✨</span>
+    <div class="toast-title">EID SALAMI</div>
+    <div class="toast-msg">Salami from Sayed</div>
+    <div class="toast-spin" id="t-spin">Spin #0</div>
+    <div class="toast-amount" id="t-amt">৳0</div>
+    <button class="toast-close" onclick="hideToast()">Alhamdulillah</button>
+  </div>
+
+  <div id="gw">
+    <div id="sky">
+      <svg style="position:absolute; width:100%; height:100%; top:0; left:0;" preserveAspectRatio="none">
+        <path d="M0,20 Q100,80 200,30 Q300,80 400,20" fill="none" stroke="rgba(212, 175, 55, 0.3)" stroke-width="1.5" />
+        <path d="M0,40 Q100,100 200,50 Q300,100 400,40" fill="none" stroke="rgba(255, 255, 255, 0.05)"
+          stroke-width="1" />
+      </svg>
+      <div class="moon"></div>
+      <div class="lantern-set">
+        <div class="lantern">
+          <div class="l-string"></div>
+          <div class="l-top"></div>
+          <div class="l-body"></div>
+          <div class="l-bot"></div>
+        </div>
+        <div class="lantern" style="animation-delay: 0.8s;">
+          <div class="l-string"></div>
+          <div class="l-top"></div>
+          <div class="l-body" style="border-color:var(--gold-bright)"></div>
+          <div class="l-bot"></div>
+        </div>
+        <div class="lantern" style="animation-delay: 1.6s;">
+          <div class="l-string"></div>
+          <div class="l-top"></div>
+          <div class="l-body"></div>
+          <div class="l-bot"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eid-header">
+      <div class="eid-title">Sayed's Eid Salami</div>
+      <div class="eid-sub">Spin to Win Salami</div>
+    </div>
+
+    <div class="wheel-area">
+      <div class="ptr"></div>
+      <canvas id="wc" width="340" height="340"></canvas>
+      <div id="stxt"></div>
+    </div>
+
+    <button class="sbtn" id="sb" onclick="startSpin()">Tap to Spin</button>
+
+    <div class="bottom-ui">
+      <div class="wins-history" id="win-log"></div>
+      <div class="stats-grid">
+        <div class="stat-item"><span class="stat-label">Spins</span><span class="stat-value" id="s-count">0</span></div>
+        <div class="stat-item"><span class="stat-label">Best</span><span class="stat-value" id="s-best">—</span></div>
+        <div class="stat-item"><span class="stat-label">Fails</span><span class="stat-value" id="s-fails">0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('wc');
+    const ctx = canvas.getContext('2d');
+    const BIG = new Set([100, 500, 1000]);
+
+    const segments = [
+      { label: '৳1', color: '#064e3b', text: '#ffffff', value: 1 },
+      { label: '৳500', color: '#d4af37', text: '#022c22', value: 500 },
+      { label: '৳5', color: '#022c22', text: '#a7f3d0', value: 5 },
+      { label: '৳2', color: '#064e3b', text: '#ffffff', value: 2 },
+      { label: '৳1000', color: '#d4af37', text: '#022c22', value: 1000 },
+      { label: '৳10', color: '#022c22', text: '#ff9a9a', value: 10 },
+      { label: '৳7', color: '#064e3b', text: '#ffffff', value: 7 },
+      { label: '৳100', color: '#d4af37', text: '#022c22', value: 100 },
+      { label: '৳3', color: '#022c22', text: '#a7f3d0', value: 3 },
+      { label: '৳20', color: '#064e3b', text: '#ffffff', value: 20 },
+      { label: '৳4', color: '#0d3229', text: '#fbbf24', value: 4 },
+      { label: '৳50', color: '#d4af37', text: '#022c22', value: 50 },
+      { label: '৳8', color: '#064e3b', text: '#ffffff', value: 8 },
+      { label: '৳10', color: '#022c22', text: '#ff9a9a', value: 10 },
+      { label: '৳6', color: '#0d3229', text: '#fbbf24', value: 6 },
+    ];
+
+    const n = segments.length;
+    const arc = (2 * Math.PI) / n;
+    let angle = 0, spinning = false, count = 0, best = 0, fails = 0;
+    const wins = [];
+
+    function addStars() {
+      const gw = document.getElementById('gw');
+      for (let i = 0; i < 40; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        const size = Math.random() * 2 + 1;
+        s.style.width = size + 'px';
+        s.style.height = size + 'px';
+        s.style.top = Math.random() * 100 + '%';
+        s.style.left = Math.random() * 100 + '%';
+        s.style.animationDelay = Math.random() * 3 + 's';
+        gw.appendChild(s);
+      }
+    }
+    addStars();
+
+    function drawWheel(a) {
+      const cw = canvas.width, ch = canvas.height;
+      const cx = cw / 2, cy = ch / 2, r = (cw / 2) - 10;
+      ctx.clearRect(0, 0, cw, ch);
+
+      for (let i = 0; i < n; i++) {
+        const s = a + i * arc, e = s + arc, seg = segments[i];
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, r, s, e);
+        ctx.closePath();
+        ctx.fillStyle = seg.color;
+        ctx.fill();
+
+        ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(s + arc / 2);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = seg.text;
+        ctx.font = 'bold 16px Rajdhani';
+        ctx.fillText(seg.label, r - 20, 5);
+        ctx.restore();
+      }
+
+      // Center hub
+      ctx.beginPath();
+      ctx.arc(cx, cy, 30, 0, Math.PI * 2);
+      const g = ctx.createRadialGradient(cx - 5, cy - 5, 5, cx, cy, 30);
+      g.addColorStop(0, '#fff');
+      g.addColorStop(1, '#d4af37');
+      ctx.fillStyle = g;
+      ctx.fill();
+      ctx.strokeStyle = '#022c22';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.font = 'bold 12px Rajdhani';
+      ctx.fillStyle = '#022c22';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('SPIN', cx, cy);
+    }
+
+    function getIdx(a) {
+      const ptr = -Math.PI / 2;
+      let rel = ((ptr - a) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+      return Math.floor(rel / arc) % n;
+    }
+
+    function isBig(a) { return BIG.has(segments[getIdx(a)].value); }
+    function easeOut(t) { return 1 - Math.pow(1 - t, 4); }
+
+    function showToast(val, wasScam) {
+      const toast = document.getElementById('big-toast');
+      const overlay = document.getElementById('page-overlay');
+      const amt = document.getElementById('t-amt');
+      const spin = document.getElementById('t-spin');
+      const icon = document.querySelector('.toast-icon');
+
+      amt.textContent = '৳' + val;
+      spin.textContent = 'Spin #' + count;
+
+      if (wasScam) {
+        amt.style.color = "#ff6b6b";
+        icon.textContent = "🎁";
+      } else {
+        amt.style.color = "var(--gold-bright)";
+        icon.textContent = "💰";
+      }
+
+      toast.classList.add('show');
+      overlay.classList.add('show');
+      spawnParticles();
+    }
+
+    function hideToast() {
+      document.getElementById('big-toast').classList.remove('show');
+      document.getElementById('page-overlay').classList.remove('show');
+    }
+
+    function spawnParticles() {
+      const clrs = ['#fbbf24', '#ffffff', '#10b981', '#3b82f6', '#ef4444'];
+      for (let i = 0; i < 50; i++) {
+        const p = document.createElement('div');
+        p.className = 'cracker';
+        const a = Math.random() * Math.PI * 2;
+        const d = 120 + Math.random() * 250;
+        p.style.left = '50%';
+        p.style.top = '50%';
+        p.style.backgroundColor = clrs[Math.floor(Math.random() * clrs.length)];
+        p.style.setProperty('--tx', Math.cos(a) * d + 'px');
+        p.style.setProperty('--ty', (Math.sin(a) * d - 100) + 'px');
+        p.style.animationDelay = Math.random() * 0.4 + 's';
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 2000);
+      }
+    }
+
+    function startSpin() {
+      if (spinning) return;
+      spinning = true;
+      document.getElementById('sb').disabled = true;
+      document.getElementById('stxt').textContent = '';
+      count++;
+      document.getElementById('s-count').textContent = count;
+
+      const smallOnes = segments.map((s, i) => ({ ...s, i })).filter(s => !BIG.has(s.value));
+      const target = smallOnes[Math.floor(Math.random() * smallOnes.length)];
+
+      const dir = Math.random() < 0.5 ? 1 : -1;
+      const rotations = 8 + Math.random() * 4;
+      const centerOffset = -Math.PI / 2 - (target.i + 0.5) * arc;
+      const jitter = (Math.random() - 0.5) * arc * 0.4;
+
+      const currentNorm = ((angle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+      let targetA;
+      if (dir === -1) targetA = angle - (rotations * Math.PI * 2) + (centerOffset - currentNorm);
+      else targetA = angle + (rotations * Math.PI * 2) + (centerOffset - currentNorm);
+      targetA += jitter;
+
+      const delta = targetA - angle;
+      const dur = 4800 + Math.random() * 800;
+      const startA = angle, startT = performance.now();
+
+      let scamTriggered = false;
+
+      function step(now) {
+        const t = Math.min((now - startT) / dur, 1);
+        angle = startA + delta * easeOut(t);
+        drawWheel(angle);
+
+        // Stealth Scam Trigger at 85% completion
+        if (!scamTriggered && t > 0.85 && t < 0.98 && isBig(angle)) {
+          scamTriggered = true;
+          const v_current = (delta / dur) * 4 * Math.pow(1 - t, 3);
+          handleStealthScam(angle, v_current, dir);
+          return;
+        }
+
+        if (t < 1) requestAnimationFrame(step);
+        else {
+          angle = startA + delta;
+          drawWheel(angle);
+          if (isBig(angle) && !scamTriggered) {
+            scamTriggered = true;
+            handleStealthScam(angle, 0, dir);
+          } else finalize(false);
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    /**
+     * Perfect Mathematical Smoothness using Cubic Spline (Hermite)
+     * Matches the current velocity at the point of transition.
+     */
+    function handleStealthScam(startVal, startVel, dir) {
+      // Push 1.5 - 2.5 segments further in the same direction
+      const push = arc * (1.6 + Math.random() * 2.2) * dir;
+      const targetVal = startVal + push;
+      const dur_scam = 1400 + Math.random() * 600;
+      const startT = performance.now();
+
+      // Cubic Spline Coeffs for: f(t) = at^3 + bt^2 + ct + d
+      // t is simplified to be from 0 to 1 over dur_scam
+      // Velocity c = startVel * dur_scam (because of time scaling)
+      const d = startVal;
+      const c = startVel * dur_scam;
+      const dist = targetVal - startVal;
+      const a = c - 2 * dist;
+      const b = 3 * dist - 2 * c;
+
+      function step(now) {
+        const t = Math.min((now - startT) / dur_scam, 1);
+        // The cubic polynomial ensures f(0)=startVal, f'(0)=startVel, f(1)=targetVal, f'(1)=0
+        angle = a * Math.pow(t, 3) + b * Math.pow(t, 2) + c * t + d;
+        drawWheel(angle);
+
+        if (t < 1) requestAnimationFrame(step);
+        else {
+          angle = targetVal;
+          drawWheel(angle);
+          if (isBig(angle)) {
+            // Recursive catch if we accidentally hit another big prize
+            handleStealthScam(angle, 0, dir);
+          } else {
+            fails++;
+            document.getElementById('s-fails').textContent = fails;
+            finalize(true);
+          }
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    function finalize(wasScam) {
+      const seg = segments[getIdx(angle)];
+      if (seg.value > best) {
+        best = seg.value;
+        document.getElementById('s-best').textContent = '৳' + best;
+      }
+
+      wins.unshift(seg.value);
+      if (wins.length > 8) wins.pop();
+      document.getElementById('win-log').innerHTML = wins.map(w => `<div class="wchip">৳${w}</div>`).join('');
+
+      showToast(seg.value, wasScam);
+      spinning = false;
+      document.getElementById('sb').disabled = false;
+    }
+
+    drawWheel(0);
+    window.addEventListener('resize', () => {
+      canvas.width = Math.min(window.innerWidth * 0.88, 340);
+      canvas.height = canvas.width;
+      drawWheel(angle);
+    });
+  </script>
+
+</body>
+
+</html>
